@@ -1,0 +1,499 @@
+/* ===== FEATURED WORK - 2 COLUMN GRID ===== */
+/* 2025 Minimal design with staggered reveal */
+
+.projects {
+    padding: clamp(60px, 10vh, 100px) 0;
+    background-color: #000;
+    position: relative;
+}
+
+.projects-header {
+    max-width: 1200px;
+    margin: 0 auto var(--spacing-2xl);
+    padding: 0 var(--spacing-xl);
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-lg);
+}
+
+.projects .section-title {
+    font-family: var(--font-family-primary);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: #fff;
+    margin: 0;
+    white-space: nowrap;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.projects .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #0047AB 0%, transparent 100%);
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-family: var(--font-family-primary);
+    font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+    line-height: 1;
+    letter-spacing: 0.01em;
+}
+
+/* Responsive header */
+@media (max-width: 768px) {
+    .projects-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+
+    .projects .section-title {
+        white-space: normal;
+    }
+}
+
+/* Projects Grid - 2 Column */
+.projects-grid {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+}
+
+/* Project Card */
+.project-card {
+    position: relative;
+    background: rgba(10, 10, 10, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, border-color 0.3s ease;
+    transform-origin: center;
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+}
+
+.project-card:hover {
+    border-color: rgba(0, 71, 171, 0.4);
+}
+
+/* Fade in when visible */
+.project-card.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Stagger animation delays */
+.project-card:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.project-card:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.project-card:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.project-card:nth-child(4) {
+    transition-delay: 0.3s;
+}
+
+.project-card:nth-child(5) {
+    transition-delay: 0.4s;
+}
+
+/* Card Content - Vertical Layout (image on top) */
+.project-card > div:first-child {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Project Image - No Overlay */
+.project-image {
+    position: relative;
+    height: 200px;
+    background: transparent;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Prevent any overlay pseudo-elements */
+.project-image::before,
+.project-image::after {
+    display: none !important;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 1 !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+    background: none !important;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    z-index: 1;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+/* Project Info */
+.project-info {
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    flex: 1;
+}
+
+.project-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-year {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+}
+
+.project-type {
+    padding: 4px 10px;
+    background: transparent;
+    border: 1px solid rgba(0, 71, 171, 0.5);
+    color: #0047AB;
+    border-radius: 3px;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.project-info h3 {
+    font-family: var(--font-family-primary);
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.project-info p {
+    font-family: var(--font-family-primary);
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.5;
+    font-size: var(--font-size-base);
+    font-weight: 400;
+    margin: 0;
+}
+
+/* Project Impact */
+.project-impact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-base);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: auto;
+}
+
+.impact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.impact-number {
+    font-family: var(--font-family-primary);
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+}
+
+.impact-text {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-xs);
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+/* Project Tags */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: var(--spacing-sm);
+}
+
+.tag {
+    padding: 4px 10px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Project Links */
+.project-links {
+    display: flex;
+    gap: 10px;
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: transparent;
+    border: 1px solid rgba(0, 71, 171, 0.3);
+    color: #0047AB;
+    border-radius: 3px;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.project-link:hover {
+    background: rgba(0, 71, 171, 0.1);
+    border-color: #0047AB;
+    transform: translateY(-2px);
+}
+
+.project-link svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Project Filters - Removed, using minimal tabs instead */
+.project-filters {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+        padding: 0 var(--spacing-lg);
+    }
+
+    .projects-header {
+        padding: 0 var(--spacing-lg);
+    }
+
+    .project-image {
+        height: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        padding: 0 var(--spacing-base);
+    }
+
+    .projects-header {
+        padding: 0 var(--spacing-base);
+    }
+
+    .project-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .project-info p {
+        font-size: var(--font-size-sm);
+    }
+
+    .project-image {
+        height: 200px;
+    }
+
+    .project-info {
+        padding: var(--spacing-base);
+    }
+}
+
+@media (max-width: 480px) {
+    .project-image {
+        height: 180px;
+    }
+
+    .project-tags {
+        gap: 4px;
+    }
+
+    .tag {
+        font-size: var(--font-size-xs);
+        padding: 3px 8px;
+    }
+}
+
+/* Show More Button - Innovative Divider Design */
+.show-more-container {
+    position: relative;
+    margin: var(--spacing-xl) 0 0 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Horizontal line with button in center */
+.show-more-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 20%,
+        rgba(255, 255, 255, 0.1) 80%,
+        transparent 100%);
+    z-index: 0;
+}
+
+.show-more-btn {
+    position: relative;
+    z-index: 1;
+    background: #000;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.6);
+    padding: 8px 20px;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.show-more-btn:hover {
+    background: rgba(0, 71, 171, 0.05);
+    border-color: rgba(0, 71, 171, 0.4);
+    color: #0047AB;
+    transform: scale(1.05);
+}
+
+.show-more-btn:focus {
+    outline: 2px solid rgba(0, 71, 171, 0.4);
+    outline-offset: 3px;
+}
+
+.show-more-btn svg {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.show-more-btn.expanded {
+    color: #0047AB;
+    border-color: rgba(0, 71, 171, 0.3);
+}
+
+.show-more-btn.expanded svg {
+    transform: rotate(180deg);
+}
+
+/* Hidden projects */
+.project-card.hidden-project {
+    display: none;
+}
+
+.project-card.hidden-project.revealed {
+    display: block;
+    animation: revealProject 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes revealProject {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .project-card {
+        transform: none !important;
+        opacity: 1 !important;
+    }
+
+    .project-image img {
+        transform: none !important;
+    }
+
+    .show-more-btn {
+        transform: none !important;
+    }
+
+    @keyframes revealProject {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+}
+
+.project-card:focus-within {
+    outline: 2px solid #0047AB;
+    outline-offset: 4px;
+}
+
+/* Animation Classes */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
