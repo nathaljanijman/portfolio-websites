@@ -1,3 +1,33 @@
-name = "nathaljanijman"
+name = "portfolio-manager"
 compatibility_date = "2025-10-03"
+
+# Cloudflare Pages configuration
 pages_build_output_dir = "."
+
+# Workers API configuration
+main = "workers/api.js"
+
+# D1 Database binding (Free tier: 5GB storage, 5M reads/day, 100K writes/day)
+[[d1_databases]]
+binding = "DB"
+database_name = "portfolio-manager-db"
+database_id = "your-database-id-here" # Will be created during setup
+
+# KV namespace for caching (optional, for future use)
+# [[kv_namespaces]]
+# binding = "CACHE"
+# id = "your-kv-namespace-id"
+
+# Environment variables
+[vars]
+ENVIRONMENT = "production"
+
+# Development configuration
+[env.development]
+[env.development.vars]
+ENVIRONMENT = "development"
+
+# Routes configuration
+[[routes]]
+pattern = "portfolio-manager.nathaljanijman.workers.dev/*"
+zone_name = ""
