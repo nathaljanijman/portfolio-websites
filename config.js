@@ -80,7 +80,7 @@ const portfolioConfig = {
         },
 
         // Background image
-        backgroundImage: "images/nathalja-work.jpg",
+        backgroundImage: "images/nathalja-work.webp",
 
         // Portfolio offering sticker
         portfolioSticker: {
@@ -140,7 +140,7 @@ const portfolioConfig = {
                 id: "abn-amro",
                 category: "product-owner",
                 featured: true,
-                image: "images/project-abn-amro.png",
+                image: "images/project-abn-amro.webp",
                 year: { nl: "2020 - Heden", en: "2020 - Present" },
                 type: { nl: "Product Owner", en: "Product Owner" },
                 title: "ABN AMRO - Website & Content Platform",
@@ -161,7 +161,7 @@ const portfolioConfig = {
                 id: "sprint-planner",
                 category: "web",
                 featured: true,
-                image: "images/project-sprintplanner.png",
+                image: "images/project-sprintplanner.webp",
                 year: { nl: "2025", en: "2025" },
                 type: { nl: "Web App Development", en: "Web App Development" },
                 title: "Sprint Planner",
@@ -188,7 +188,7 @@ const portfolioConfig = {
     about: {
         title: { nl: "Over Nathalja", en: "About Nathalja" },
         subtitle: { nl: "Van topsport naar digital product leadership", en: "From top athlete to digital product leadership" },
-        image: "images/nathalja-about.jpg",
+        image: "images/nathalja-about.webp",
 
         paragraphs: {
             nl: [

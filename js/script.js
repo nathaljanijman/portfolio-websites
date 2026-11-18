@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Progressive Header Scroll Effect
         function handleHeaderScroll() {
+            if (!header) return;
             const scrollY = window.scrollY;
 
             if (scrollY > 50) {
@@ -343,9 +344,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const notification = document.createElement('div');
         notification.className = `notification notification-${type}`;
         notification.innerHTML = `
-            <span>${message}</span>
+            <span></span>
             <button class="notification-close">&times;</button>
         `;
+        notification.querySelector('span').textContent = message;
 
         // Notification styles
         notification.style.cssText = `
@@ -764,9 +766,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const time = now.toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' });
 
             messageDiv.innerHTML = `
-                <div class="message-content">${messageText}</div>
-                <div class="message-time">${time}</div>
+                <div class="message-content"></div>
+                <div class="message-time"></div>
             `;
+            // Use textContent so user input is never interpreted as HTML
+            messageDiv.querySelector('.message-content').textContent = messageText;
+            messageDiv.querySelector('.message-time').textContent = time;
 
             chatMessages.appendChild(messageDiv);
             chatMessages.scrollTop = chatMessages.scrollHeight;
