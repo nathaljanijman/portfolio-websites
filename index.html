@@ -7,12 +7,7 @@
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JMLD724KEM"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-JMLD724KEM');
-    </script>
+    <script src="js/gtag-init.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/hero-simple.css">
     <link rel="stylesheet" href="components/featured-work.css">
@@ -75,7 +70,7 @@
     <section id="home" class="hero-simple" role="main" aria-label="Nathalja Nijman introduction">
         <!-- Background Image -->
         <div class="hero-background">
-            <img src="images/nathalja-work.jpg" alt="Nathalja Nijman - Product Owner" class="hero-bg-image">
+            <img src="images/nathalja-work.webp" alt="Nathalja Nijman - Product Owner" class="hero-bg-image" width="1600" height="2243" fetchpriority="high">
             <div class="hero-overlay"></div>
         </div>
 
@@ -97,7 +92,7 @@
 
             <!-- Conversational Interface -->
             <div class="hero-conversation">
-                <form class="hero-input-form" id="heroConversationForm" onsubmit="return false;">
+                <form class="hero-input-form" id="heroConversationForm">
                     <div class="input-container">
                         <input
                             type="text"
@@ -168,7 +163,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-avatar">
-                    <img src="images/nathalja-about.jpg" alt="Nathalja">
+                    <img src="images/nathalja-avatar.webp" alt="Nathalja" width="160" height="160">
                     <div class="status-indicator"></div>
                 </div>
                 <div class="modal-intro">
@@ -233,7 +228,7 @@
     <div class="conversation-dialogue" id="conversationDialogue" style="display: none;">
                         <div class="dialogue-header">
                             <div class="dialogue-avatar">
-                                <img src="images/nathalja-about.jpg" alt="Nathalja">
+                                <img src="images/nathalja-avatar.webp" alt="Nathalja" width="160" height="160">
                                 <div class="online-indicator"></div>
                             </div>
                             <div class="dialogue-intro">
@@ -249,7 +244,7 @@
                                 <div class="chat-conversation" id="chatConversation">
                                     <div class="chat-message nathalja-message">
                                         <div class="message-avatar">
-                                            <img src="images/nathalja-about.jpg" alt="Nathalja">
+                                            <img src="images/nathalja-avatar.webp" alt="Nathalja" width="160" height="160">
                                         </div>
                                         <div class="message-content">
                                             <p>Hey! Waar kan ik je mee helpen? Vertel me gerust wat je op je hart hebt.</p>
@@ -260,7 +255,7 @@
                                 <div class="chat-input-area">
                                     <div class="typing-indicator" id="typingIndicator" style="display: none;">
                                         <div class="message-avatar">
-                                            <img src="images/nathalja-about.jpg" alt="Nathalja">
+                                            <img src="images/nathalja-avatar.webp" alt="Nathalja" width="160" height="160">
                                         </div>
                                         <div class="typing-dots">
                                             <span></span>
@@ -312,8 +307,8 @@
                                         </ul>
                                     </div>
                                     <div class="response-actions">
-                                        <button class="back-btn" onclick="showMainScreen()">← Terug naar opties</button>
-                                        <button class="action-btn" onclick="showContactScreen()">Laten we in contact komen</button>
+                                        <button class="back-btn" data-show-screen="mainScreen">← Terug naar opties</button>
+                                        <button class="action-btn" data-show-screen="contactScreen">Laten we in contact komen</button>
                                     </div>
                                 </div>
                             </div>
@@ -338,7 +333,7 @@
                                                 <small>Professioneel netwerken</small>
                                             </div>
                                         </a>
-                                        <button class="contact-option" onclick="showProjectScreen()">
+                                        <button class="contact-option" data-show-screen="projectScreen">
                                             <div class="contact-icon">💬</div>
                                             <div class="contact-details">
                                                 <strong>Project gesprek plannen</strong>
@@ -347,7 +342,7 @@
                                         </button>
                                     </div>
                                     <div class="response-actions">
-                                        <button class="back-btn" onclick="showMainScreen()">← Terug naar opties</button>
+                                        <button class="back-btn" data-show-screen="mainScreen">← Terug naar opties</button>
                                     </div>
                                 </div>
                             </div>
@@ -381,7 +376,7 @@
                                             <textarea id="projectDescription" rows="3" placeholder="Vertel me meer over wat je voor ogen hebt..."></textarea>
                                         </div>
                                         <div class="response-actions">
-                                            <button type="button" class="back-btn" onclick="showMainScreen()">← Terug naar opties</button>
+                                            <button type="button" class="back-btn" data-show-screen="mainScreen">← Terug naar opties</button>
                                             <button type="submit" class="action-btn">Verstuur aanvraag</button>
                                         </div>
                                     </form>
@@ -412,8 +407,8 @@
                                         </div>
                                     </div>
                                     <div class="response-actions">
-                                        <button class="back-btn" onclick="showMainScreen()">← Terug naar opties</button>
-                                        <button class="action-btn" onclick="showProjectScreen()">Laten we samenwerken</button>
+                                        <button class="back-btn" data-show-screen="mainScreen">← Terug naar opties</button>
+                                        <button class="action-btn" data-show-screen="projectScreen">Laten we samenwerken</button>
                                     </div>
                                 </div>
                             </div>
@@ -441,8 +436,8 @@
                                         </div>
                                     </div>
                                     <div class="response-actions">
-                                        <button class="back-btn" onclick="showMainScreen()">← Terug naar opties</button>
-                                        <button class="action-btn" onclick="showProjectScreen()">Laten we het bespreken</button>
+                                        <button class="back-btn" data-show-screen="mainScreen">← Terug naar opties</button>
+                                        <button class="action-btn" data-show-screen="projectScreen">Laten we het bespreken</button>
                                     </div>
                                 </div>
                             </div>
@@ -471,7 +466,7 @@
                 <div class="project-card" data-category="product-owner">
                     <div>
                         <div class="project-image">
-                            <img src="images/project-abn-amro.png" alt="ABN AMRO Website Platform">
+                            <img src="images/project-abn-amro.webp" alt="ABN AMRO Website Platform" width="1200" height="545" loading="lazy" decoding="async">
                         </div>
                         <div class="project-info">
                             <div class="project-meta">
@@ -514,7 +509,7 @@
                 <div class="project-card" data-category="web">
                     <div>
                         <div class="project-image">
-                            <img src="images/project-sprintplanner.png" alt="Sprint Planner Interface">
+                            <img src="images/project-sprintplanner.webp" alt="Sprint Planner Interface" width="1200" height="673" loading="lazy" decoding="async">
                         </div>
                         <div class="project-info">
                             <div class="project-meta">
@@ -557,7 +552,7 @@
                 <div class="project-card hidden-project" data-category="product-owner">
                     <div>
                         <div class="project-image">
-                            <img src="images/project-balr.png" alt="BALR. E-Commerce Platform">
+                            <img src="images/project-balr.webp" alt="BALR. E-Commerce Platform" width="1200" height="585" loading="lazy" decoding="async">
                         </div>
                         <div class="project-info">
                             <div class="project-meta">
@@ -600,7 +595,7 @@
                 <div class="project-card hidden-project" data-category="web">
                     <div>
                         <div class="project-image">
-                            <img src="images/project-dhgate.png" alt="DHGate Monitor Dashboard">
+                            <img src="images/project-dhgate.webp" alt="DHGate Monitor Dashboard" width="1200" height="490" loading="lazy" decoding="async">
                         </div>
                         <div class="project-info">
                             <div class="project-meta">
@@ -643,7 +638,7 @@
                 <div class="project-card hidden-project" data-category="entrepreneurship">
                     <div>
                         <div class="project-image">
-                            <img src="images/project-slopez.png" alt="SLOPEZ Premium Ski Goggles">
+                            <img src="images/project-slopez.webp" alt="SLOPEZ Premium Ski Goggles" width="1200" height="529" loading="lazy" decoding="async">
                         </div>
                         <div class="project-info">
                             <div class="project-meta">
@@ -707,7 +702,7 @@
             <div class="about-content">
                 <!-- About Image -->
                 <div class="about-image">
-                    <img src="images/nathalja-about.jpg" alt="Nathalja Nijman">
+                    <img src="images/nathalja-about.webp" alt="Nathalja Nijman" width="900" height="1350" loading="lazy" decoding="async">
                 </div>
 
                 <!-- About Text -->

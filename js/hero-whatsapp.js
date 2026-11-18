@@ -79,12 +79,14 @@ function initConversationalDialogue() {
 
         messageDiv.innerHTML = `
             <div class="message-avatar">
-                <img src="images/nathalja-about.jpg" alt="${isUser ? 'User' : 'Nathalja'}">
+                <img src="images/nathalja-avatar.webp" alt="${isUser ? 'User' : 'Nathalja'}">
             </div>
             <div class="message-content">
-                <p>${content}</p>
+                <p></p>
             </div>
         `;
+        // Use textContent so user input is never interpreted as HTML
+        messageDiv.querySelector('.message-content p').textContent = content;
 
         chatConversation.appendChild(messageDiv);
         chatConversation.scrollTop = chatConversation.scrollHeight;
@@ -345,4 +347,14 @@ Kun je me wat meer vertellen over je specifieke situatie? Dan kan ik je beter he
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initConversationalDialogue();
+});
+// Switch between dialogue screens (buttons use data-show-screen="<screenId>")
+document.addEventListener('click', function(e) {
+    const trigger = e.target.closest('[data-show-screen]');
+    if (!trigger) return;
+    const target = document.getElementById(trigger.dataset.showScreen);
+    if (!target) return;
+    document.querySelectorAll('.dialogue-screen').forEach(function(screen) {
+        screen.style.display = screen === target ? 'block' : 'none';
+    });
 });
